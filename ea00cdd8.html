@@ -148,6 +148,7 @@
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
         document.querySelector('#send2uart').addEventListener('click', send2uart);
         
+        //控制外围设备开关
         function extset_on() {
             var topic = device_id+'/in/write';
             var commond = '{"extrelay_switch":true}';

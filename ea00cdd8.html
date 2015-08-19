@@ -45,8 +45,8 @@
  </div>
 
  <div class="button-bar">
-     <a class="button" style="background:white; color:blond" id="extset_on">ExtSetOn</a>
-     <a class="button" style="background:black; color:purple" id="extset_off">ExtSetOff</a>
+     <a class="button" style="background:blond; color:white" id="extset_on">ExtSetOn</a>
+     <a class="button" style="background:purple; color:white" id="extset_off">ExtSetOff</a>
  </div>
 
  <div class="button-bar">
@@ -147,6 +147,20 @@
         }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
         document.querySelector('#send2uart').addEventListener('click', send2uart);
+        
+        function extset_on() {
+            var topic = device_id+'/in/write';
+            var commond = '{"extrelay_switch":true}';
+            client.publish(topic, commond);
+        }
+        document.querySelector('#extset_on').addEventListener('click', extset_on);
+
+        function extset_off() {
+            var topic = device_id+'/in/write';
+            var commond = '{"extrelay_switch":false}';
+            client.publish(topic, commond);
+        }
+        document.querySelector('#extset_off').addEventListener('click', extset_off);
 
         function led_on() {
             var topic = device_id+'/in/write';
